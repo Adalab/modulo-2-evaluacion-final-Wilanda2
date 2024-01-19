@@ -1,6 +1,8 @@
 'use strict';
 
-console.log('>> Ready :)');
+console.log('tamos ready :)');
+
+const 
 
 
 
