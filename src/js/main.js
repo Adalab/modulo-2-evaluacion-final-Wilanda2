@@ -12,18 +12,20 @@ const btnSearch = document.querySelector('.js-btn-search');
 const containerGen = document.querySelector('.js-container-gen');
 const containerFav = document.querySelector('.js-container-fav');
 
-const inputValue = inputSearch.value;
-
-const url = (`https://api.jikan.moe/v4/anime?q=${inputValue}`)
 
 
-function getDataApi() {
+
+
+
+function getDataApi(url) {
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
       showsList = data.data;
-      console.log(showsList);
+      //aquí estoy segura de que los datos han llegado, por eso renderizo aquí
+      renderShows(showsList, containerGen);
     });
+
 }
 
 // function handleAddFav(event) {
@@ -51,32 +53,33 @@ function getDataApi() {
 //     }
 // }
 
-
+//Función para pintar con dos parámetros, qué pinto y dónde lo pinto
 function renderShows(arrayShows, infoContainer) {
     let html = '';
     for (const show of arrayShows) {
         html += 
         `<div class="show js-show-selected" id="${show.mal_id}">
-        <img src="${show.images.jpg.large_image_url}" class="js-img" alt="${show.title}">
+            <img src="${show.images.jpg.large_image_url}" class="js-img" alt="${show.title}">
       
-        <div>
-          <h3 class="title">${show.title}</h3>
-        </div>
+            <div>
+            <h3 class="title">${show.title}</h3>
+            </div>
 
-    </div>`
+        </div>`
     }
     infoContainer.innerHTML = html;
 }
 
 
-//Búsqueda y pintar en búsqueda al pinchar Buscar
+//Evento búsqueda con filtro en la propia url y pintar búsqueda al pinchar Buscar
 function handleSearch(event) {
     event.preventDefault();
-    getDataApi();
-    const filteredShows = showsList.filter((item) =>
-    item.title.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    renderShows(filteredShows, containerGen)
+    const inputValue = inputSearch.value;
+    const url = (`https://api.jikan.moe/v4/anime?q=${inputValue}`)
+    //esta forma de la url ya me está haciendo el filter, no necesito otra función para filtrar
+    getDataApi(url);
+    
+    
 }
 
 btnSearch.addEventListener("click", handleSearch);
