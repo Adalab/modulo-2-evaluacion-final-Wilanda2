@@ -13,10 +13,6 @@ const containerGen = document.querySelector('.js-container-gen');
 const containerFav = document.querySelector('.js-container-fav');
 
 
-
-
-
-
 function getDataApi(url) {
     fetch(url)
     .then((response) => response.json())
@@ -25,33 +21,41 @@ function getDataApi(url) {
       //aquí estoy segura de que los datos han llegado, por eso renderizo aquí
       renderShows(showsList, containerGen);
     });
-
 }
 
-// function handleAddFav(event) {
-//     console.log(event.currentTarget.mal_id);
-//     const idShowClicked = event.currenTarget.mal_id;
-//     const foundShowId = showsList.find(
-//         (series) => idShowClicked === series.mal_id
-//     );
+function handleAddFav(event) {
+    console.log(event.currentTarget.id);
+    console.log(event.target.id);;
+    const idShowClicked = event.currentTarget.id;
+    console.log(idShowClicked);
+    const foundShowId = showsList.find(
+        (series) => idShowClicked === series.id
+    );
+    
 
 //     const indexShowInFav = favoriteShows.findIndex(
-//         (series) => series.mal_id === idShowClicked
+//         (series) => series.id === idShowClicked
 //     );
 
-//     if ( indexShowInFav === -1) {
+//     if (indexShowInFav === -1) {
 //         favoriteShows.push(foundShowId);
 //     }
 //     console.log(favoriteShows);
 //     renderShows(favoriteShows, containerFav);
-// }
+}
 
-// function listenerShows() {
-//     const allShows = document.querySelector('.js-show-selected');
-//     for (const oneShow of allShows) {
-//         oneShow.addEventListener("click", handleAddFav);
-//     }
-// }
+function listenerShows() {
+    const allShows = document.querySelectorAll('.js-show-selected');
+    for (const oneShow of allShows) {
+        oneShow.addEventListener("click", handleAddFav);
+    }
+}
+
+
+
+
+
+
 
 //Función para pintar con dos parámetros, qué pinto y dónde lo pinto
 function renderShows(arrayShows, infoContainer) {
@@ -68,6 +72,7 @@ function renderShows(arrayShows, infoContainer) {
         </div>`
     }
     infoContainer.innerHTML = html;
+    listenerShows();
 }
 
 
@@ -77,9 +82,7 @@ function handleSearch(event) {
     const inputValue = inputSearch.value;
     const url = (`https://api.jikan.moe/v4/anime?q=${inputValue}`)
     //esta forma de la url ya me está haciendo el filter, no necesito otra función para filtrar
-    getDataApi(url);
-    
-    
+    getDataApi(url);   
 }
 
 btnSearch.addEventListener("click", handleSearch);
