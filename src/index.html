@@ -8,22 +8,33 @@
   </head>
 
   <body>
-    
+    <main>
     <h1>Buscador de series de anime</h1>
+      <div>
+        <input type="text" class="js-input-search">
+        <button class="js-btn-search">Buscar</button>
+        <!-- <button class="js-btn-reset">Reset</button> -->
+      </div>
 
-    <div>
-      <input type="text" class="js-input-search">
-      <button class="js-btn-search">Buscar</button>
-      <button class="js-btn-reset">Reset</button>
-      <h2>Todas las series</h2>
-      <section class="js-container"></section>
-    </div>
-      
-    <div>
-      <h2>Tus series favoritas</h2>
-      <section class="js-container-fav"></section>
-    </div>
+      <div class="container">
+
+        <div>
+          <h2>Todas las series</h2>
+          <section class="js-container-gen">
+          </section>
+        </div>
+                    
     
+        <div>
+          <h2>Tus series favoritas</h2>
+          <section class="js-container-fav">
+          </section>
+        </div>
+
+      </div>
+      
+    </section>
+      </main>
     <script src="./js/main.js"></script>
   </body>
 </html>
