@@ -2,11 +2,20 @@
 function setLocalData() {
     const favsToString = JSON.stringify(showsFav);
     localStorage.setItem('favShows', favsToString);
+    console.log(favsToString);
+    
 }
 
-//función para coger los datos del local. Se ejecuta en getDataApi al cargar la página.
+//función para coger los datos del local. Se ejecuta fuera de todo para que lo haga al cargar la página.
 function getFromLocal() {
-    const favoriteShows = JSON.parse(localStorage.getItem(favsToString));
-    console.log(favoriteShows);
-    renderShows(showsFav, containerFav);
+    const favoriteShows = JSON.parse(localStorage.getItem('favShows'));
+    console.log(favoriteShows);  
+    if (favoriteShows !== null) {
+        //dos pasos: modificar el array de paletteList con las cosas del local; y luego vuelvo a renderizar
+        showsFav = favoriteShows;
+        renderShows(favoriteShows, containerFav);
+      console.log(favoriteShows);
+    }
 }
+
+getFromLocal();
