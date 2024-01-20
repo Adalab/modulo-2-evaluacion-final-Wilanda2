@@ -21,7 +21,6 @@ function getDataApi(url) {
       console.log(showsList);
       //aquí estoy segura de que los datos han llegado, por eso renderizo aquí
       renderShows(showsList, containerGen);
-      localStorage.setItem('shows', JSON.stringify(showsList));
     });
 }
 
@@ -46,14 +45,12 @@ function handleAddFav(event) {
     );
         console.log(indexShowInFav);
     if (indexShowInFav === -1) {
-        //const foundShowIdInt = parseInt(foundShowId);
-        console.log(typeof(indexShowInFav));
         showsFav.push(foundShowId);
-        console.log(showsFav);
         
     }
     console.log(showsFav);
     renderShows(showsFav, containerFav);
+    setLocalData();
 }
 
 function listenerShows() {
@@ -64,12 +61,21 @@ function listenerShows() {
 }
 
 
+//función para convertir el objeto a string y guardarlo en el local. Se ejecuta en handleAddFav().
+function setLocalData() {
+    const favsToString = JSON.stringify(showsFav);
+    localStorage.setItem('favShows', favsToString);
+}
+
+//función para coger los datos del local. Se ejecuta en getDataApi al cargar la página.
+function getFromLocal() {
+    const favoriteShows = JSON.parse(localStorage.getItem(favsToString));
+    console.log(favoriteShows);
+    renderShows(showsFav, containerFav);
+}
 
 
-
-
-
-//Función para pintar con dos parámetros, qué pinto y dónde lo pinto
+//Función para pintar con dos parámetros, qué pinto y dónde lo pinto. Está puesta al buscar algo en el buscador, getDataApi(), y al meter en favs, handleAddFav().
 function renderShows(arrayShows, infoContainer) {
     let html = '';
     for (const show of arrayShows) {
@@ -80,7 +86,6 @@ function renderShows(arrayShows, infoContainer) {
             <div>
             <h3 class="title">${show.title}</h3>
             </div>
-
         </div>`
     }
     infoContainer.innerHTML = html;
@@ -97,4 +102,5 @@ function handleSearch(event) {
     getDataApi(url);   
 }
 
+//Este es el botón que desencadena todo, al darle aquí, handleSearch()  coge el valor del input introducido, lo concatena a la url y coge los datos solicitados de la API.
 btnSearch.addEventListener("click", handleSearch);
