@@ -6,18 +6,17 @@ function handleAddFav(event) {
         (series) => idShowClickedInt === series.mal_id
     );
        
-    
     const indexShowInFav = showsFav.findIndex(
         (series) => series.mal_id === idShowClickedInt
     );
         
     if (indexShowInFav === -1) {
         showsFav.push(foundShowId);
-        
     }
     
     renderShows(showsFav, containerFav);
     setLocalData(showsFav);
+    //removeFav();
 }
 
 function listenerShows() {

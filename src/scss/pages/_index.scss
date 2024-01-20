@@ -1,3 +1,5 @@
+
+
 .container {
   display: flex;
   gap: 50px;
@@ -7,9 +9,9 @@
 
 .favorite {
   .show {
-    border: 3px solid purple;
+    background-color: chocolate;
   }
   .title {
-    color: white;
+    color: darkmagenta;
   }
 }
