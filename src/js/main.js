@@ -18,30 +18,42 @@ function getDataApi(url) {
     .then((response) => response.json())
     .then((data) => {
       showsList = data.data;
+      console.log(showsList);
       //aquí estoy segura de que los datos han llegado, por eso renderizo aquí
       renderShows(showsList, containerGen);
+      localStorage.setItem('shows', JSON.stringify(showsList));
     });
 }
 
 function handleAddFav(event) {
-    console.log(event.currentTarget.id);
-    console.log(event.target.id);;
     const idShowClicked = event.currentTarget.id;
-    console.log(idShowClicked);
+    console.log(event.currentTarget.id);
+    console.log(typeof(event.currentTarget.id))
+        const idShowClickedInt = parseInt(idShowClicked);
+        console.log(idShowClickedInt);
+        console.log(typeof(idShowClickedInt));
+
     const foundShowId = showsList.find(
-        (series) => idShowClicked === series.id
+        (series) => idShowClickedInt === series.mal_id
     );
     
-
-//     const indexShowInFav = favoriteShows.findIndex(
-//         (series) => series.id === idShowClicked
-//     );
-
-//     if (indexShowInFav === -1) {
-//         favoriteShows.push(foundShowId);
-//     }
-//     console.log(favoriteShows);
-//     renderShows(favoriteShows, containerFav);
+    console.log(foundShowId);
+    console.log(typeof(foundShowId));
+    
+    ;
+    const indexShowInFav = showsFav.findIndex(
+        (series) => series.mal_id === idShowClickedInt
+    );
+        console.log(indexShowInFav);
+    if (indexShowInFav === -1) {
+        //const foundShowIdInt = parseInt(foundShowId);
+        console.log(typeof(indexShowInFav));
+        showsFav.push(foundShowId);
+        console.log(showsFav);
+        
+    }
+    console.log(showsFav);
+    renderShows(showsFav, containerFav);
 }
 
 function listenerShows() {
@@ -63,7 +75,7 @@ function renderShows(arrayShows, infoContainer) {
     for (const show of arrayShows) {
         html += 
         `<div class="show js-show-selected" id="${show.mal_id}">
-            <img src="${show.images.jpg.large_image_url}" class="js-img" alt="${show.title}">
+            <img src="${show.images.jpg.image_url}" class="js-img" alt="${show.title}">
       
             <div>
             <h3 class="title">${show.title}</h3>
