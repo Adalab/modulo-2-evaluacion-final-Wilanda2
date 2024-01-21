@@ -1,6 +1,7 @@
 function handleAddFav(event) {
     const idShowClicked = event.currentTarget.id;
     const idShowClickedInt = parseInt(idShowClicked);
+    const showSelected = document.querySelector('.js-show-selected');
         
     const foundShowId = showsList.find(
         (series) => idShowClickedInt === series.mal_id
@@ -12,11 +13,12 @@ function handleAddFav(event) {
         
     if (indexShowInFav === -1) {
         showsFav.push(foundShowId);
+    } else {
+        showSelected.classList.add('fav');
     }
     
     renderFavs(showsFav, containerFav);
     setLocalData(showsFav);
-    //removeFav();
 }
 
 function listenerShows() {
