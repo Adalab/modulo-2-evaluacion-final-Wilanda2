@@ -3,7 +3,7 @@ function renderShows(arrayShows, infoContainer) {
     let html = '';
     for (const show of arrayShows) {
         html += 
-        `<li class="js-show-selected" id="${show.mal_id}">
+        `<li class="js-show-selected show" id="${show.mal_id}">
             <img src="${show.images.jpg.image_url}" class="js-img" alt="${show.title}">
       
             <div>

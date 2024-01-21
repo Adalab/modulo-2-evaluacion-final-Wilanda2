@@ -8,20 +8,15 @@
 
 
 .favorite {
-
-  li {
+  .fav {
   border: 8px solid coral;
   border-radius: 5px;
   margin-bottom: 5px;
   background-color: black;
   color: white;
   }
-  
-  h2 {
-    border: none;
-  }
 }
 
-li {
+.show {
   list-style: none;
 }

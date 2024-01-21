@@ -1,5 +1,6 @@
 function handleRemoveFav() {
-    showsList.splice();
+    console.log(showsFav);
+    //showsFav.splice();
 }
 
 
