@@ -8,10 +8,20 @@
 
 
 .favorite {
-  .show {
-    background-color: chocolate;
+
+  li {
+  border: 8px solid coral;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: black;
+  color: white;
   }
-  .title {
-    color: darkmagenta;
+  
+  h2 {
+    border: none;
   }
+}
+
+li {
+  list-style: none;
 }
