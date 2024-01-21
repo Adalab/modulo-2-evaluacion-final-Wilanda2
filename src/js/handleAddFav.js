@@ -14,7 +14,7 @@ function handleAddFav(event) {
         showsFav.push(foundShowId);
     }
     
-    renderShows(showsFav, containerFav);
+    renderFavs(showsFav, containerFav);
     setLocalData(showsFav);
     //removeFav();
 }

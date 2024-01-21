@@ -5,4 +5,4 @@ function handleRemoveFav() {
 
 
 
-//showinfav.addEventListener("click" handleRemoveFav);
+closeIcon.addEventListener("click", handleRemoveFav);
