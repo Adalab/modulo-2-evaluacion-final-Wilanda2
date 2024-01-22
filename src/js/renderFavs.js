@@ -13,9 +13,8 @@ function renderFavs(arrayShows, infoContainer) {
                 `<div>
                     <h3 class="fav_title">${oneFav.title}</h3>
                 </div>
-
-                <div js-close-icon>
-                    <i class="fa-regular fa-circle-xmark js-close-icon icon"></i>
+                <div class="js-close-icon close-icon-container">
+                    <i class="fa-regular fa-circle-xmark icon"></i>
                 </div>
             </li>`
     }

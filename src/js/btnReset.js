@@ -1,9 +1,12 @@
-
 function handleReset() {
-    let showsList = showsList.splice(0, showsList.legth);
-    let showsFav = showsFav.splice(0, showsFav.legth);
+    showsList = [];
+    showsFav = [];
+
+    containerGen.innerHTML = "";
+    containerFav.innerHTML = "";
+    inputSearch.value = "";
+    localStorage.setItem('favShows', JSON.stringify([]));
 }
-console.log(showsList);
 
 btnReset.addEventListener("click", handleReset);
 

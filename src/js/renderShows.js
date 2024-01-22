@@ -2,8 +2,17 @@
 function renderShows(arrayShows, infoContainer) {
     let html = '';
     for (const show of arrayShows) {
+        //si está en favoritos ponme esta clase 
+        const seriesInFav = showsFav.findIndex(
+            (seriesfav) => seriesfav.mal_id === show.mal_id
+            
+        );
+        console.log(show.mal_id);
+        if (seriesInFav !== -1) {
+        showSelected.classList.add('fav');}
+
         html += 
-        `<li class="js-show-selected show" id="${show.mal_id}">`;
+        `<li class="js-show-selected js-show-selectedfav show" id="${show.mal_id}">`;
     
         let urlImg = `<img src="${show.images.jpg.image_url}" alt="${show.title}">`;
         if (urlImg === `<img src="https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png" alt="${show.title}">`
@@ -16,9 +25,12 @@ function renderShows(arrayShows, infoContainer) {
                     <h3>${show.title}</h3>
                 </div>
             </li>`;
+
+        
     }
-    console.log(showsList)
-    
+    console.log(showsList)     
+    }
+
+
     infoContainer.innerHTML = html;
     listenerShows();
-}
