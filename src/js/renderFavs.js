@@ -1,6 +1,6 @@
-function renderFavs(arrayShows, infoContainer) {
+function renderFavs() {
     let htmlFav = '';
-    for (const oneFav of arrayShows) {
+    for (const oneFav of showsFav) {
         htmlFav += 
         `<li class="fav js-show-favorite" id="${oneFav.mal_id}">`;
 
@@ -17,9 +17,10 @@ function renderFavs(arrayShows, infoContainer) {
                     <i class="fa-regular fa-circle-xmark icon"></i>
                 </div>
             </li>`
+            
+        
     }
-    console.log(showsFav);
-
-    infoContainer.innerHTML = htmlFav;
+    containerFav.innerHTML = htmlFav;
+    
     listenerFavs();
 }

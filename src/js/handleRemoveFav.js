@@ -1,5 +1,5 @@
  function handleRemoveFav(event) {
-    const closeIcon = event.target;
+    const closeIcon = event.currentTarget;
     console.log(event.target);
     console.log(event.currentTarget);
 
@@ -17,16 +17,16 @@
     //    console.log(foundRemovedId);
 
     const indexRemovedInFav = showsFav.findIndex(
-        (seriesRemoved) => seriesRemoved.mal_id === closeIconParent
+        (seriesRemoved) => seriesRemoved.mal_id === idRemovedClickedInt
     );
     console.log(indexRemovedInFav);
     console.log(typeof(indexRemovedInFav));
         
-    if (indexRemovedInFav === -1) {
+    if (idRemovedClickedInt !== -1) {
         showsFav.splice(indexRemovedInFav, 1);
     }
     
-    renderFavs(showsFav, containerFav);
+    renderFavs();
     setLocalData(showsFav);
 }
 

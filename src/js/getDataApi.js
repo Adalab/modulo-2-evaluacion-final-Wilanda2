@@ -4,7 +4,7 @@ function getDataApi(url) {
     .then((data) => {
       showsList = data.data;
       //aquí estoy segura de que los datos han llegado, por eso renderizo aquí
-      renderShows(showsList, containerGen);
-      renderFavs(showsFav, containerFav);
+      renderShows();
+      renderFavs();
     });
 }

@@ -10,7 +10,7 @@ function getFromLocal() {
     if (favoriteShows !== null) {
         //dos pasos: modificar el array de paletteList con las cosas del local; y luego vuelvo a renderizar
         showsFav = favoriteShows;
-        renderFavs(favoriteShows, containerFav);
+        renderFavs();
     }
 }
 

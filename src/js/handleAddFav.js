@@ -16,9 +16,9 @@ function handleAddFav(event) {
     } 
 
     
-    renderFavs(showsFav, containerFav);
+    renderFavs();
     setLocalData(showsFav);
-    renderShows(showsList, containerGen); 
+    renderShows(); 
 }
 
 function listenerShows() {
