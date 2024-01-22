@@ -10,15 +10,17 @@ function renderFavs(arrayShows, infoContainer) {
         }
             htmlFav += urlImgFav;
             htmlFav +=            
-            `<div>
-                <h3 class="fav_title">${oneFav.title}</h3>
-            </div>
+                `<div>
+                    <h3 class="fav_title">${oneFav.title}</h3>
+                </div>
 
-            <div>
-                <i class="fa-regular fa-circle-xmark js-close-icon icon"></i>
-            </div>
-        </li>`
+                <div js-close-icon>
+                    <i class="fa-regular fa-circle-xmark js-close-icon icon"></i>
+                </div>
+            </li>`
     }
+    console.log(showsFav);
+
     infoContainer.innerHTML = htmlFav;
-    //listenerFavs();
+    listenerFavs();
 }

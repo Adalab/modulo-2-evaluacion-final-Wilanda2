@@ -13,12 +13,15 @@ function handleAddFav(event) {
         
     if (indexShowInFav === -1) {
         showsFav.push(foundShowId);
-    } else {
+    } 
+
+    if (indexShowInFav !== -1) {
         showSelected.classList.add('fav');
     }
     
     renderFavs(showsFav, containerFav);
     setLocalData(showsFav);
+    renderShows(showsList, containerGen); 
 }
 
 function listenerShows() {

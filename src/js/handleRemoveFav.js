@@ -5,9 +5,9 @@
         
     const foundRemovedId = showsFav.find(
         (seriesRemoved) => idRemovedClickedInt === seriesRemoved.mal_id
-        
     );
        console.log(idRemovedClickedInt);
+
     const indexRemovedInFav = showsFav.findIndex(
         (seriesRemoved) => seriesRemoved.mal_id === idRemovedClickedInt
     );
@@ -18,27 +18,12 @@
     
     renderFavs(showsFav, containerFav);
     setLocalData(showsFav);
-    
 }
 
-function listenerShowsRemoved() {
-    const allShowsRemoved = document.querySelectorAll('.js-show-favorite');
+function listenerFavs() {
+    const allShowsRemoved = document.querySelectorAll('.js-close-icon');
     for (const oneShowRemoved of allShowsRemoved) {
         oneShowRemoved.addEventListener("click", handleRemoveFav);
     }
 }
     
-
-
-
-
-
-
-// function listenerFavs() {
-// for (const showRemoved of showsFav) {
-//         showRemoved.addEventListener("click", handleRemoveFav);
-//     }
-// }
-
-
-//closeIcon.addEventListener("click", handleRemoveFav);

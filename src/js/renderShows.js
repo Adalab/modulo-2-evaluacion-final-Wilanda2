@@ -10,14 +10,14 @@ function renderShows(arrayShows, infoContainer) {
         ) {
             urlImg = `<img src="https://placehold.co/250x350" alt="${show.title}">`;
         }
-        html += urlImg;
-        html += 
-        `<div>
-            <h3>${show.title}</h3>
-            </div>
-        </li>`;
+            html += urlImg;
+            html += 
+                `<div>
+                    <h3>${show.title}</h3>
+                </div>
+            </li>`;
     }
-    
+    console.log(showsList)
     
     infoContainer.innerHTML = html;
     listenerShows();
